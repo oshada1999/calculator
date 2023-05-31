@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculator</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #10454F;
+        }
+
+        .calculator {
+            border: 1px solid #b6d4fe;
+            padding: 20px;
+            border-radius: 20px;
+            background: transparent;
+            box-shadow: 0px 3px 15px rgba(113, 115, 119, 5);
+        }
+
+        input {
+            border: none;
+            padding: 8px;
+            margin: 5px;
+            background: transparent;
+            box-shadow: 0px 3px 15px;
+            border-radius: 25px;
+            font-size: 20px;
+            text-align: right;
+            cursor: pointer;
+            color: white;
+
+        }
+
+        input::placeholder {
+            color: #b6d4fe;
+        }
+
+        button {
+            border: none;
+            width: 60px;
+            height: 60px;
+            margin: 15px;
+            border-radius: 50%;
+            background: transparent;
+            color: white;
+            font-size: 20px;
+            box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.3);
+            cursor: pointer;
+        }
+
+        .equals {
+            background-color: orange;
+            color: #087990;
+        }
+
+        .clearBtn {
+            background-color: darkred;
+        }
+
+        button:hover {
+            background-color: #51585e;
+        }
+
+    </style>
+
+</head>
+<body>
+<div class="calculator">
+    <button class="clearBtn" id="clear">C</button>
+    <input type="text" placeholder="0" id="output">
+    <div>
+        <button onclick="display('7')">7</button>
+        <button onclick="display('8')">8</button>
+        <button onclick="display('9')">9</button>
+        <button onclick="display('+')">+</button>
+    </div>
+    <div>
+        <button onclick="display('4')">4</button>
+        <button onclick="display('5')">5</button>
+        <button onclick="display('6')">6</button>
+        <button onclick="display('-')">-</button>
+    </div>
+    <div>
+        <button onclick="display('1')">1</button>
+        <button onclick="display('2')">2</button>
+        <button onclick="display('3')">3</button>
+        <button onclick="display('/')">/</button>
+    </div>
+    <div>
+        <button onclick="display('0')">0</button>
+        <button onclick="display('.')">.</button>
+        <button onclick="Calculate()" class="equals">=</button>
+        <button onclick="display('*')">*</button>
+    </div>
+
+</div>
+
+<script src="assets/bootstrap/js/bootstrap.min.js"></script>
+<script src="assets/js/jquery-3.6.4.min.js"></script>
+<script>
+    $('#clear').click(function () {
+        $('input').val('');
+    });
+    let outputScreen = document.getElementById("output");
+
+    function display(num){
+        outputScreen.value += num;
+    }
+    function Calculate(){
+        try {
+            outputScreen.value = eval(outputScreen.value);
+        }
+        catch (error){
+            alert("invalid");
+        }
+    }
+
+    function clear(){
+        outputScreen.value = "";
+    }
+
+
+
+
+</script>
+</body>
+</html>
